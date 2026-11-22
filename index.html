@@ -12,9 +12,9 @@ body{height:100%;margin:0;background:var(--bg);display:flex;align-items:center;j
 #wrap{position:relative;height:100%;width:min(100%,calc(100dvh*.75));max-height:100%;aspect-ratio:3/4}
 canvas{width:100%;height:100%;display:block;image-rendering:pixelated;touch-action:none}
 button{position:absolute;font:inherit;font-size:11px;color:var(--fg);background:var(--btn);border:3px solid #fff;padding:14px 12px;opacity:.88;touch-action:manipulation}
-#msl{right:8px;bottom:8px;padding:18px 12px}#mute{right:8px;top:8px;padding:6px 8px;background:#235}
+#msl{right:4px;bottom:4px;padding:6px 6px;font-size:7px;border-width:2px;opacity:.55}#mute{right:8px;top:8px;padding:6px 8px;background:#235}
 </style></head><body>
-<div id="wrap"><canvas id="c"></canvas><button id="msl">MISSILE 20</button><button id="mute">♪ ON</button></div>
+<div id="wrap"><canvas id="c"></canvas><button id="msl">MSL 20</button><button id="mute">♪ ON</button></div>
 <script>
 const C=document.getElementById('c'),X=C.getContext('2d'),W=240,H=320,R=Math.random;C.width=W;C.height=H;X.imageSmoothingEnabled=false;
 function spr(rows,pal){const c=document.createElement('canvas');c.width=rows[0].length;c.height=rows.length;const g=c.getContext('2d');rows.forEach((r,y)=>[...r].forEach((ch,x)=>{if(pal[ch]){g.fillStyle=pal[ch];g.fillRect(x,y,1,1)}}));return c}
@@ -148,7 +148,7 @@ tx('1UP',6,10,'#ff6',  'left',7);tx(pad(score),6,20,'#fff','left',7);tx('HI',150
 for(let i=0;i<lives;i++)X.drawImage(SP.p,4+i*14,H-13,12,9);tx('STAGE '+stage+'  ROLL x'+rolls,6,H-17,'#9cf','left',6);
 if(banner>0&&st=='play')btxt.forEach((s,i)=>tx(s,W/2,120+i*16,i?'#fff':'#ffd23a','center',i?8:12));
 if(st=='over'){X.fillStyle='rgba(0,0,0,.55)';X.fillRect(0,90,W,110);tx('GAME OVER',W/2,125,'#f55','center',14);tx('SCORE '+pad(score),W/2,150,'#fff','center',9);if(score>=hi&&score>0)tx('NEW HI-SCORE!',W/2,168,'#ffd23a','center',8);if(overT<=0)tx('TAP TO RETRY',W/2,190,'#9f9','center',8)}
-const mt='MISSILE '+ammo;if(MB.textContent!=mt)MB.textContent=mt}
+const mt='MSL '+ammo;if(MB.textContent!=mt)MB.textContent=mt}
 function title(){tx("SKY RAID",W/2,50,'#ffd23a','center',20);tx("'42",W/2,78,'#f55','center',24);
 const rows=[[SP.g,'100',1],[SP.r,'x5 = POW!',1],[SP.m,'500',.8],[SP.b,'1000',.6],[SP.B,'5000',.5]];
 rows.forEach((r,i)=>{const y=118+i*26,w=r[0].width*r[2],h=r[0].height*r[2];X.drawImage(r[0],Math.round(60-w/2),Math.round(y-h/2),w,h);tx(r[1],100,y+3,'#fff','left',8)});
